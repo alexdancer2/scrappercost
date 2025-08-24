@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Inteligente de Coste de Leads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-5xl">
+        <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Calculadora Inteligente de Coste de Leads</h1>
+            <p class="text-gray-600 mb-8">Introduce el número de leads y la calculadora seleccionará automáticamente los planes de API más económicos para ti.</p>
+
+            <!-- Resumen de Planes de API -->
+            <div class="mb-10">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Resumen de Planes de API</h2>
+                <div class="space-y-8">
+                    <!-- SerpApi -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">SerpApi</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Developer</h4><p class="text-xl font-semibold">$75<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">5,000 búsquedas</p></div>
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Production</h4><p class="text-xl font-semibold">$150<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">15,000 búsquedas</p></div>
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Big Data</h4><p class="text-xl font-semibold">$275<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">30,000 búsquedas</p></div>
+                        </div>
+                    </div>
+                    <!-- Google Map Places -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Google Map Places</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Pro</h4><p class="text-xl font-semibold">$9.99<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">15,000 peticiones</p></div>
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Ultra</h4><p class="text-xl font-semibold">$29<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">50,000 peticiones</p></div>
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Mega</h4><p class="text-xl font-semibold">$299<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">1,000,000 peticiones</p></div>
+                        </div>
+                    </div>
+                    <!-- Verify Email -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Verify Email</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Pro</h4><p class="text-xl font-semibold">$1.99<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">5,000 peticiones</p><p class="text-xs text-gray-500">+$0.003 extra</p></div>
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Ultra</h4><p class="text-xl font-semibold">$5.90<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">20,000 peticiones</p><p class="text-xs text-gray-500">+$0.004 extra</p></div>
+                            <div class="bg-gray-50 p-4 rounded-xl border"><h4 class="font-bold">Mega</h4><p class="text-xl font-semibold">$49.90<span class="text-sm font-normal">/mes</span></p><p class="text-sm text-gray-600">200,000 peticiones</p><p class="text-xs text-gray-500">+$0.005 extra</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculadora -->
+            <div>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Calcular Coste Óptimo</h2>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <div class="w-full sm:w-1/2">
+                        <label for="leads" class="block text-sm font-medium text-gray-700 mb-1">Número de Leads a Scrapear</label>
+                        <input type="number" id="leads" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Ej: 10000">
+                    </div>
+                    <div class="w-full sm:w-auto">
+                         <button id="calculateBtn" class="w-full sm:w-auto bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out mt-2 sm:mt-5">
+                            Calcular
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resultados -->
+            <div id="results" class="mt-8 bg-white p-6 rounded-xl border border-gray-200 hidden">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Resultados del Cálculo</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <p class="text-sm text-indigo-800 font-medium">Coste Total Estimado</p>
+                        <p id="totalCost" class="text-3xl font-bold text-indigo-900"></p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <p class="text-sm text-green-800 font-medium">Coste por Lead</p>
+                        <p id="costPerLead" class="text-3xl font-bold text-green-900"></p>
+                    </div>
+                </div>
+                <div id="planDetails" class="mt-6">
+                    <h4 class="text-lg font-semibold text-gray-700 mb-3 text-center sm:text-left">Planes Seleccionados para el Coste Más Bajo:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div id="serpApiPlan" class="bg-gray-50 p-4 rounded-lg border"></div>
+                        <div id="gmapsPlan" class="bg-gray-50 p-4 rounded-lg border"></div>
+                        <div id="verifyEmailPlan" class="bg-gray-50 p-4 rounded-lg border"></div>
+                    </div>
+                </div>
+                 <div id="warnings" class="mt-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- ESTRUCTURA DE PRECIOS DE LAS APIS ---
+        const USD_TO_EUR_RATE = 0.92;
+
+        const serpApiPlans = [
+            { name: 'Developer', cost: 75, limit: 5000, overage: Infinity }, // Overage infinito significa que no hay plan superior
+            { name: 'Production', cost: 150, limit: 15000, overage: Infinity },
+            { name: 'Big Data', cost: 275, limit: 30000, overage: Infinity }
+        ];
+
+        const gmapsPlans = [
+            { name: 'Pro', cost: 9.99, limit: 15000, overage: Infinity },
+            { name: 'Ultra', cost: 29.00, limit: 50000, overage: Infinity },
+            { name: 'Mega', cost: 299.00, limit: 1000000, overage: Infinity }
+        ];
+
+        const verifyEmailPlans = [
+            { name: 'Pro', cost: 1.99, limit: 5000, overage: 0.003 },
+            { name: 'Ultra', cost: 5.90, limit: 20000, overage: 0.004 },
+            { name: 'Mega', cost: 49.90, limit: 200000, overage: 0.005 }
+        ];
+
+        // --- Elementos del DOM ---
+        const leadsInput = document.getElementById('leads');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resultsDiv = document.getElementById('results');
+        const totalCostEl = document.getElementById('totalCost');
+        const costPerLeadEl = document.getElementById('costPerLead');
+        const warningsDiv = document.getElementById('warnings');
+        const serpApiPlanEl = document.getElementById('serpApiPlan');
+        const gmapsPlanEl = document.getElementById('gmapsPlan');
+        const verifyEmailPlanEl = document.getElementById('verifyEmailPlan');
+
+        /**
+         * Calcula el coste total para un número de leads en un plan específico,
+         * incluyendo los costes de excedente (overage).
+         */
+        function calculatePlanCost(leads, plan) {
+            let totalCost = plan.cost;
+            if (leads > plan.limit && plan.overage !== Infinity) {
+                const extraLeads = leads - plan.limit;
+                totalCost += extraLeads * plan.overage;
+            }
+            return totalCost;
+        }
+
+        /**
+         * Encuentra el plan más económico para un número de leads dado.
+         * Si el número de leads supera el límite del plan más alto, se queda con el más alto.
+         */
+        function findOptimalPlan(leads, plans) {
+            let bestPlan = null;
+            let minCost = Infinity;
+
+            for (const plan of plans) {
+                // Si el plan actual no cubre los leads, y no es el plan más caro, no es una opción
+                if (leads > plan.limit && plan.overage === Infinity && plans.indexOf(plan) < plans.length -1) {
+                    continue;
+                }
+                
+                const currentCost = calculatePlanCost(leads, plan);
+
+                if (currentCost < minCost) {
+                    minCost = currentCost;
+                    bestPlan = plan;
+                }
+            }
+            return { plan: bestPlan, cost: minCost };
+        }
+        
+        // --- Lógica de Cálculo Principal ---
+        calculateBtn.addEventListener('click', () => {
+            const numLeads = parseInt(leadsInput.value);
+
+            if (isNaN(numLeads) || numLeads <= 0) {
+                 warningsDiv.innerHTML = `
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md">
+                        <p class="font-bold">Entrada no válida</p>
+                        <p>Por favor, introduce un número de leads válido y mayor que cero.</p>
+                    </div>`;
+                resultsDiv.classList.remove('hidden');
+                totalCostEl.textContent = '-';
+                costPerLeadEl.textContent = '-';
+                serpApiPlanEl.innerHTML = '';
+                gmapsPlanEl.innerHTML = '';
+                verifyEmailPlanEl.innerHTML = '';
+                return;
+            }
+            
+            warningsDiv.innerHTML = ''; // Limpiar advertencias
+
+            // 1. Encontrar el plan óptimo y su coste para cada servicio
+            const optimalSerpApi = findOptimalPlan(numLeads, serpApiPlans);
+            const optimalGmaps = findOptimalPlan(numLeads, gmapsPlans);
+            const optimalVerifyEmail = findOptimalPlan(numLeads, verifyEmailPlans);
+
+            // 2. Convertir todos los costes a EUR
+            const serpApiCostEur = optimalSerpApi.cost; // Ya está en EUR
+            const gmapsCostEur = optimalGmaps.cost * USD_TO_EUR_RATE;
+            const verifyEmailCostEur = optimalVerifyEmail.cost * USD_TO_EUR_RATE;
+
+            // 3. Calcular totales
+            const totalCost = serpApiCostEur + gmapsCostEur + verifyEmailCostEur;
+            const costPerLead = totalCost / numLeads;
+
+            // 4. Mostrar resultados
+            totalCostEl.textContent = `€${totalCost.toFixed(2)}`;
+            costPerLeadEl.textContent = `€${costPerLead.toFixed(4)}`;
+            
+            // 5. Mostrar detalles de los planes seleccionados
+            serpApiPlanEl.innerHTML = `
+                <h5 class="font-bold text-gray-800">SerpApi</h5>
+                <p class="text-gray-600">Plan: <span class="font-semibold text-indigo-600">${optimalSerpApi.plan.name}</span></p>
+                <p class="text-gray-600">Coste: <span class="font-semibold">€${serpApiCostEur.toFixed(2)}</span></p>`;
+            
+            gmapsPlanEl.innerHTML = `
+                <h5 class="font-bold text-gray-800">Google Maps</h5>
+                <p class="text-gray-600">Plan: <span class="font-semibold text-indigo-600">${optimalGmaps.plan.name}</span></p>
+                <p class="text-gray-600">Coste: <span class="font-semibold">€${gmapsCostEur.toFixed(2)}</span></p>`;
+
+            verifyEmailPlanEl.innerHTML = `
+                <h5 class="font-bold text-gray-800">Verify Email</h5>
+                <p class="text-gray-600">Plan: <span class="font-semibold text-indigo-600">${optimalVerifyEmail.plan.name}</span></p>
+                <p class="text-gray-600">Coste: <span class="font-semibold">€${verifyEmailCostEur.toFixed(2)}</span></p>`;
+
+
+            // 6. Mostrar advertencia si se supera el límite más alto de SerpApi o Gmaps
+            if (numLeads > serpApiPlans[serpApiPlans.length - 1].limit || numLeads > gmapsPlans[gmapsPlans.length - 1].limit) {
+                 warningsDiv.innerHTML = `
+                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md">
+                        <p class="font-bold">Límite Máximo Superado</p>
+                        <p>El número de leads supera el plan más alto de SerpApi o Google Maps. El coste es una estimación y podría no ser preciso.</p>
+                    </div>`;
+            }
+
+            resultsDiv.classList.remove('hidden');
+        });
+
+    </script>
+</body>
+</html>
